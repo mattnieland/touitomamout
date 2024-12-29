@@ -11,6 +11,9 @@ RUN npm ci --ignore-scripts && npm rebuild --platform=linux --libc=musl sharp &&
 # Add read and write privileges to the /data directory
 RUN mkdir -p /data && chown -R node:node /data
 
+# Declare the /data directory as a volume
+VOLUME ["/data"]
+
 USER node
 
 # Ensure the /data directory is writable by the node user
